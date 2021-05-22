@@ -5,12 +5,14 @@
  */
 
 CHIP Nor16Way {
-    IN in[16];
-    OUT out;
+    IN
+        in[16];
+    OUT
+        out;
 
     PARTS:
-    Or8Way(in=in[0..7], out=or-0-7);
-    Or8Way(in=in[8..15], out=or-8-15);
-    Or(a=or-0-7, b=or-8-15, out=or-0-15);
-    Not(in=or-0-15, out=out);
+        Or8Way(in=in[0..7], out=or-0-7);
+        Or8Way(in=in[8..15], out=or-8-15);
+        Or(a=or-0-7, b=or-8-15, out=or-0-15);
+        Not(in=or-0-15, out=out);
 }

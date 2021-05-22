@@ -9,11 +9,13 @@
  */
 
 CHIP Or8Way {
-    IN in[8];
-    OUT out;
+    IN
+        in[8];
+    OUT
+        out;
 
     PARTS:
-    Or4Way(in=in[0..3], out=or-0-3);
-    Or4Way(in=in[4..7], out=or-4-7);
-    Or(a=or-0-3, b=or-4-7, out=out);
+        Or4Way(in=in[0..3], out=or-0-3);
+        Or4Way(in=in[4..7], out=or-4-7);
+        Or(a=or-0-3, b=or-4-7, out=out);
 }

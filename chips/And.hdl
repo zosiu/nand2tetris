@@ -10,10 +10,12 @@
  */
 
 CHIP And {
-    IN a, b;
-    OUT out;
+    IN
+        a, b;
+    OUT
+        out;
 
     PARTS:
-    Nand(a=a, b=b, out=a-nand-b);
-    Not(in=a-nand-b, out=out);
+        Nand(a=a, b=b, out=a-nand-b);
+        Not(in=a-nand-b, out=out);
 }

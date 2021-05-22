@@ -12,13 +12,15 @@
  */
 
 CHIP DMux4Way {
-    IN in, sel[2];
-    OUT a, b, c, d;
+    IN
+        in, sel[2];
+    OUT
+        a, b, c, d;
 
     PARTS:
-    Not(in=sel[1], out=not-sel-1);
-    And(a=in, b=sel[1], out=in-and-sel-1);
-    And(a=in, b=not-sel-1, out=in-and-not-sel-1);
-    DMux(in=in-and-not-sel-1, sel=sel[0], a=a, b=b);
-    DMux(in=in-and-sel-1, sel=sel[0], a=c, b=d);
+        Not(in=sel[1], out=not-sel-1);
+        And(a=in, b=sel[1], out=in-and-sel-1);
+        And(a=in, b=not-sel-1, out=in-and-not-sel-1);
+        DMux(in=in-and-not-sel-1, sel=sel[0], a=a, b=b);
+        DMux(in=in-and-sel-1, sel=sel[0], a=c, b=d);
 }

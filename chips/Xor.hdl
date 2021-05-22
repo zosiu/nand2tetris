@@ -9,12 +9,14 @@
  */
 
 CHIP Xor {
-    IN a, b;
-    OUT out;
+    IN
+        a, b;
+    OUT
+        out;
 
     PARTS:
-    Nand(a=a, b=b, out=a-nand-b);
-    Nand(a=a, b=a-nand-b, out=x);
-    Nand(a=b, b=a-nand-b, out=y);
-    Nand(a=x, b=y, out=out);
+        Nand(a=a, b=b, out=a-nand-b);
+        Nand(a=a, b=a-nand-b, out=x);
+        Nand(a=b, b=a-nand-b, out=y);
+        Nand(a=x, b=y, out=out);
 }
