@@ -6,19 +6,19 @@ echo "ELementary logic gates"
 for i in "${elementary_gates[@]}"
 do
   echo '  '  $i
-  echo '    ' `../tools/HardwareSimulator.sh 01/$i.tst`
+  echo '    ' `../../tools/HardwareSimulator.sh $i.tst`
 done
 
 echo "16-bit variants"
 for i in "${variants_16_bit[@]}"
 do
   echo '  '  $i
-  echo '    ' `../tools/HardwareSimulator.sh 01/$i.tst`
+  echo '    ' `../../tools/HardwareSimulator.sh $i.tst`
 done
 
 echo "Multi-way variants"
 for i in "${variants_multi_way[@]}"
 do
   echo '  '  $i
-  echo '    ' `../tools/HardwareSimulator.sh 01/$i.tst`
+  echo '    ' `../../tools/HardwareSimulator.sh $i.tst`
 done
