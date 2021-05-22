@@ -15,7 +15,7 @@ CHIP Mux {
 
     PARTS:
     Not(in=sel, out=not-sel);
-    And(a=a, b=not-sel, out=a-and-not-sel);
-    And(a=b, b=sel, out=b-and-sel);
-    Or(a=a-and-not-sel, b=b-and-sel, out=out);
+    Nand(a=a, b=not-sel, out=a-nand-not-sel);
+    Nand(a=b, b=sel, out=b-nand-sel);
+    Nand(a=a-nand-not-sel, b=b-nand-sel, out=out);
 }
