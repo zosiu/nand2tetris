@@ -1,0 +1,15 @@
+/**
+ * 16-way Nor:
+ * out = 1 if in == 0000000000000000
+ *       0 otherwise
+ */
+
+CHIP Nor16Way {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    Nor8Way(in=in[0..7], out=nor-0-7);
+    Nor8Way(in=in[8..15], out=nor-8-15);
+    And(a=nor-0-7, b=nor-8-15, out=out);
+}

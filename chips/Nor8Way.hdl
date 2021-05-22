@@ -1,0 +1,15 @@
+/**
+ * 8-way Nor:
+ * out = 1 if in == 00000000
+ *       0 otherwise
+ */
+
+CHIP Nor8Way {
+    IN in[8];
+    OUT out;
+
+    PARTS:
+    Nor4Way(in=in[0..3], out=nor-0-3);
+    Nor4Way(in=in[4..7], out=nor-4-7);
+    And(a=nor-0-3, b=nor-4-7, out=out);
+}

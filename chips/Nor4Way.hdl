@@ -1,0 +1,15 @@
+ /**
+ * 4-way Nor:
+ * out = 1 if in == 0000
+ *       0 otherwise
+ */
+
+CHIP Nor4Way {
+    IN in[4];
+    OUT out;
+
+    PARTS:
+    Nor(a=in[0], b=in[1], out=nor-0-1);
+    Nor(a=in[2], b=in[3], out=nor-2-3);
+    And(a=nor-0-1, b=nor-2-3, out=out);
+}
