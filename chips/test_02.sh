@@ -1,5 +1,5 @@
 adders=(HalfAdder FullAdder Add16)
-alu=(Inc16 ALU)
+alu=(Inc16 Nor16Way ALU)
 
 echo "Adders"
 for i in "${adders[@]}"
