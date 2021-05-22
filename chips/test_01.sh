@@ -1,6 +1,6 @@
 elementary_gates=(Not And Or Xor Mux DMux)
 variants_16_bit=(Not16 And16 Or16 Mux16)
-variants_multi_way=(Or8Way Mux4Way16 Mux8Way16 DMux4Way DMux8Way)
+variants_multi_way=(Or4Way Or8Way Mux4Way16 Mux8Way16 DMux4Way DMux8Way)
 
 echo "ELementary logic gates"
 for i in "${elementary_gates[@]}"
