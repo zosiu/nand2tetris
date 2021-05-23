@@ -2,6 +2,7 @@
 *.out
 *.tst
 *.cmp
+*.hack
 
 00
 01
