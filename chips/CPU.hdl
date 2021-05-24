@@ -54,16 +54,12 @@ CHIP CPU {
             And(a=instruction[15], b=instruction[4], out=dreg-load);
 
       ALU(x=alu-in-x, y=alu-in-y,
-          zx=alu-zx, nx=alu-nx, zy=alu-zy, ny=alu-ny, f=alu-f, no=alu-no,
+          zx=instruction[11], nx=instruction[10],
+          zy=instruction[9], ny=instruction[8],
+          f=instruction[7], no=instruction[6],
           out=alu-out, zr=alu-zr-out, ng=alu-ng-out, out=outM);
             Mux16(a=areg-out, b=inM, sel=alu-in-y-from-mem, out=dreg-out, out=alu-in-y);
             And(a=instruction[15], b=instruction[12], out=alu-in-y-from-mem);
-            Mux(a=true, b=instruction[11], sel=instruction[15], out=alu-zx);
-            Mux(a=true, b=instruction[10], sel=instruction[15], out=alu-nx);
-            Mux(a=false, b=instruction[9], sel=instruction[15], out=alu-zy);
-            Mux(a=false, b=instruction[8], sel=instruction[15], out=alu-ny);
-            Mux(a=false, b=instruction[7], sel=instruction[15], out=alu-f);
-            Mux(a=false, b=instruction[6], sel=instruction[15], out=alu-no);
 
       PC(in=areg-out,
          reset=reset,
