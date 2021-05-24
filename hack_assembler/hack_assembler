@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative 'lib/parser'
+require_relative 'lib/transformer'
+
+require 'optparse'
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+  opts.banner = 'Usage: hack_assembler [options]'
+
+  options[:filename] = nil
+  opts.on('-c', '--compile FILE', 'Compile FILE (source.asm)') do |file|
+    options[:filename] = file
+  end
+
+  opts.on('-h', '--help', 'Display this screen') do
+    puts opts
+    exit
+  end
+end
+
+optparse.parse!
+
+parser = Hack::Parser.new
+transform = Hack::Transformer.new
+
+program = File.read(options[:filename])
+syntax = parser.parse(program)
+tree = transform.apply(syntax)
+
+symbol_table = Hack::Vars.new
+
+label_offset = 0
+tree.each_with_index do |x, i|
+  if x.is_a?(Hack::Label)
+    x.generate(i - label_offset, symbol_table)
+    label_offset += 1
+  end
+end
+
+puts tree.reject { |x| x.is_a?(Hack::Label) }.map { |x| x.generate(-1, symbol_table) }.join("\n")

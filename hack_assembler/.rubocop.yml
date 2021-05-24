@@ -1,0 +1,14 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+    - 'bin/*'
+
+Layout/LineLength:
+  Max: 130
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'namespace']
+
+Style/Documentation:
+  Enabled: false
